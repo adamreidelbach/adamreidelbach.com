@@ -1,0 +1,92 @@
+---
+title: Open Source Git Workflow (an overview)
+slug: open-source-git-workflow
+description: This guide will walk you through a git workflow that is often used when contributing to open source projects.
+author: Adam Reidelbach
+image: ./images/john-t-maze.jpg
+---
+
+![Alt tag goes here.](./images/john-t-maze.jpg)
+
+_This tutorial assumes a basic understanding of git. Including creating branches, adding / committing code, and creating pull requests._
+
+Prior to my current role, my workflow while working with git typically looked something like this:
+
+1. Clone the repo.
+2. Ensure the local master is update to date, then create a branch off of master and start coding.
+3. Add, commit, and push up the branch.
+4. Check for any merge conflicts or unintended changes. Then, create a pull request for review.
+5. Rinse and repeat, starting with step 2.
+
+In my current role, we use a pattern that is commonly used when contributing to an open source project. It uses two concepts that were not included in the previous workflow example, [forks](https://help.github.com/en/articles/fork-a-repo) and [remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes).
+
+### Forks
+
+When working with a project that you do not maintain, you likely don't have the necessary credentials to push changes directly to that repo. This is where forking comes in. You can ***make a copy*** of the repo onto our personal account and make all the changes you want, without affecting the original repo.
+
+### Remotes
+
+After you make this copy (fork) of the repo, this new location is where you will be pushing your changes. The original repo and your copy are in ***different locations***, aka remotes.
+
+## TL;DR
+(In case you'd like to skip the more thorough explanation)
+
+1. Fork the repo to your desired account.
+2. Clone the forked repo locally.
+3. Add a remote that points to the original repo and name it `upstream`.
+4. Manually sync up with `upstream` by running `get fetch upstream` followed by `git status` to take a look.
+    * If necessary, pull in any changes.
+5. Create a branch off of master and start coding.
+6. Add, commit, and push up the branch (to your fork).
+7. Check for any merge conflicts or unintended changes between your branch and the original repo's master branch. If it looks good, create a pull request.
+8. Rinse and repeat, starting with step 4.
+
+## Break It Down
+
+* Fork the repo you'll be working with to your desired account.
+* [Clone](https://help.github.com/en/articles/cloning-a-repository) your forked repo locally by running `git clone https://github.com/your-username/name-of-repo.git`
+ - Navigate to your new repo with  `cd name-of-repo`
+ - Run `git status && git remote -v` in your terminal and you will see the following:
+```shell
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+origin  https://github.com/your-username/name-of-repo.git (fetch)
+origin  https://github.com/your-username/name-of-repo.git (push)
+```
+
+* Notice that the name `origin` is auto-generated and points at your
+fork of the repo. When you make new changes to the code base, `origin` is where you will push them. Eventually, the original repo will have changes made to it, so you need a way to pull in these updates. In order to do so, you need to add a remote that points to it. Traditionally, we call this `upstream`.
+
+* Run `git remote add upstream https://github.com/not-your-username/name-of-repo.git`. Then `git status && git remote -v` once again to see the newly added remote and its location.
+
+```shell
+origin  https://github.com/your-username/name-of-repo.git (fetch)
+origin  https://github.com/your-username/name-of-repo.git (push)
+upstream  https://github.com/not-your-username/name-of-repo.git (fetch)
+upstream  https://github.com/not-your-username/name-of-repo.git (push)
+```
+
+* Next, we need to manually sync up with `upstream` by reaching out to it. To do this, run `git fetch upstream`. After that, if you run `git status`, it still says:
+```shell
+On branch master
+Your branch is up to date with 'origin/master'.
+```
+
+* Let's resolve this by ensuring our local master is pointing to `upstream`'s master. Run `git branch --set-upstream-to=upstream/master master` and then `git status` once again. Since this has been recently cloned, no changes are likely, so you should see something like this:
+```shell
+On branch master
+Your branch is up to date with 'upstream/master'.
+```
+> * Now that this this is setup, if your branch were to fall out of date, you can simply run `git pull`, to pull in any changes.
+> * Additionally, I use a tool called [Spaceship Prompt](https://github.com/denysdovhan/spaceship-prompt), as it gives me some helpful visual representations of the status of my master branch, among many other features.
+
+* Now that we know our local master is up to date, create a branch off of master and start coding.
+* After you have successfully completed your changes and run any necessary tests, you can add and commit your work.
+* Once you are ready to push up your changes, remember to push them to your forked repo. The command will look something like, `git push origin feature-branch`.
+* Once you see your branch appear in GitHub, be sure to compare your branch with the original repo's master branch. This is where you can check for any merge conflicts that need to be resolved or any changes that perhaps you didn't intend to make. If it all looks good, make your pull request.
+
+I hope this was helpful to you. Please feel free to reach out if you have questions or suggestions on how to improve this tutorial, or leave a comment below. You can also find me on [Twitter](https://twitter.com/adamreidelbach).
+
+I'd like to credit [Kent C Dodds's](https://twitter.com/kentcdodds/) tutorial on [egghead.io](https://egghead.io/) called [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github) as well as the [Pro Git](https://git-scm.com/book/en/v2) book written by [Scott Chacon](https://twitter.com/chacon) and [Ben Straub](https://twitter.com/benstraub). The [GitHub - Contributing to a Project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) chapter was particularly helpful. They were both great resources when putting this together and I highly suggest checking them out if you are looking for more information.
