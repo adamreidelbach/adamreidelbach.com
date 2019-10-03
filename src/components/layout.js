@@ -127,7 +127,7 @@ const Layout = ({ children }) => {
       <main
         css={css`
           padding: 0 2rem;
-          max-width: 800px;
+          max-width: 900px;
           margin: 1rem auto;
 
           @media (min-width: 414px) {
