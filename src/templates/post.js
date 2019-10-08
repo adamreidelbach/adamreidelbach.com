@@ -25,24 +25,26 @@ const PostTemplate = ({ data: { mdx: post } }) => {
 
   const BlogWrapper = styled('div')`
     a {
-      color: ${isDarkMode ? colors.lightblue : colors.blue}
+      color: ${isDarkMode ? colors.lightblue : colors.blue};
     }
   `;
 
   return (
     <Layout>
       <BlogWrapper>
-          <h1 css={css`
+        <h1
+          css={css`
             text-align: center;
             margin-bottom: 2rem;
-          `}>
-            {post.frontmatter.title}
-          </h1>
+          `}
+        >
+          {post.frontmatter.title}
+        </h1>
         <MDXRenderer>{post.body}</MDXRenderer>
         <ReadLink to="/">&larr; back to home</ReadLink>
       </BlogWrapper>
     </Layout>
-  )
+  );
 };
 
 export default PostTemplate;

@@ -14,7 +14,12 @@ const Pre = styled('pre')`
 `;
 
 const Code = ({ codeString, language }) => (
-  <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
+  <Highlight
+    {...defaultProps}
+    code={codeString}
+    language={language}
+    theme={theme}
+  >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <Pre className={className} style={style}>
         {tokens.map((line, i) => (

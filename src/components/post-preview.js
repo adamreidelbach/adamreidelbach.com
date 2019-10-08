@@ -6,27 +6,28 @@ import colors from '../utils/colors';
 
 const PostPreview = ({ post, isDarkMode }) => {
   return (
-    <article css={css`
-      display: flex;
-      margin-top: 0;
-      padding-bottom: 1rem;
-    `}
+    <article
+      css={css`
+        display: flex;
+        margin-top: 0;
+        padding-bottom: 1rem;
+      `}
     >
       <Link
         to={post.slug}
         className="test"
         css={css`
-        margin: 1rem 1rem 0 0;
-        width: 300px;
-      `}
+          margin: 1rem 1rem 0 0;
+          width: 300px;
+        `}
       >
         <Image
           fluid={post.image.sharp.fluid}
           css={css`
-          * {
-            margin-top: 0;
-          }
-        `}
+            * {
+              margin-top: 0;
+            }
+          `}
           alt={post.title}
         />
       </Link>
@@ -44,7 +45,7 @@ const PostPreview = ({ post, isDarkMode }) => {
         <p>{post.excerpt}</p>
       </div>
     </article>
-  )
+  );
 };
 
 export default PostPreview;

@@ -6,21 +6,24 @@ const ProjectPreview = ({ project, isDarkMode }) => {
   return (
     <article
       css={css`
-      display: flex;
-      margin-top: 0;
-      padding-bottom: 1rem;
-    `}
+        display: flex;
+        margin-top: 0;
+        padding-bottom: 1rem;
+      `}
     >
-      <div css={css`
-        margin-top: 0.5rem;
-      `}>
+      <div
+        css={css`
+          margin-top: 0.5rem;
+        `}
+      >
         <h3>
           <a
             href={project.url}
             css={css`
               color: ${isDarkMode ? colors.white : colors.black};
             `}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {project.title}
           </a>
@@ -28,7 +31,7 @@ const ProjectPreview = ({ project, isDarkMode }) => {
         <p>{project.description}</p>
       </div>
     </article>
-  )
+  );
 };
 
 export default ProjectPreview;

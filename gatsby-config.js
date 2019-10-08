@@ -6,8 +6,8 @@ module.exports = {
   plugins: [
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -24,11 +24,11 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-use-dark-mode",
+      resolve: 'gatsby-plugin-use-dark-mode',
       options: {
-        classNameDark: "dark-mode",
-        classNameLight: "light-mode",
-        storageKey: "darkMode",
+        classNameDark: 'dark-mode',
+        classNameLight: 'light-mode',
+        storageKey: 'darkMode',
         minify: true,
       }
     },
@@ -44,6 +44,12 @@ module.exports = {
       options: {
         name: 'images',
         path: 'images'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-emoji-favicon',
+      options: {
+        emoji: '👋'
       }
     }
   ]

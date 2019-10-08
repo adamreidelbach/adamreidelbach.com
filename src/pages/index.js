@@ -15,28 +15,38 @@ export default () => {
   return (
     <>
       <Layout isDarkMode={isDarkMode}>
-        <h2 css={css`
-          margin: 1.5rem 0 1rem 0;
-        `}>
+        <h2
+          css={css`
+            margin: 1.5rem 0 1rem 0;
+          `}
+        >
           Writing
         </h2>
         {posts.map(post => (
           <PostPreview key={post.slug} post={post} isDarkMode={isDarkMode} />
         ))}
 
-        <hr css={css`
-          border: 0;
-          height: 1px;
-          background: ${isDarkMode ? colors.white : colors.black};
-        `} />
+        <hr
+          css={css`
+            border: 0;
+            height: 1px;
+            background: ${isDarkMode ? colors.white : colors.black};
+          `}
+        />
 
-        <h2 css={css`
-          margin: 1.5rem 0 1rem 0;
-        `}>
+        <h2
+          css={css`
+            margin: 1.5rem 0 1rem 0;
+          `}
+        >
           Projects
         </h2>
         {projects.map(project => (
-          <ProjectPreview key={project.title} project={project} isDarkMode={isDarkMode} />
+          <ProjectPreview
+            key={project.title}
+            project={project}
+            isDarkMode={isDarkMode}
+          />
         ))}
       </Layout>
     </>

@@ -53,7 +53,8 @@ const Layout = ({ children, isDarkMode }) => {
             }
 
             blockquote {
-              border-left: calc(0.2vw + 2px) solid ${isDarkMode ? colors.black : colors.console};
+              border-left: calc(0.2vw + 2px) solid
+                ${isDarkMode ? colors.black : colors.console};
               padding: 0.1% 6% 0.1% 4%;
               margin: 1.6rem 1vw;
             }
