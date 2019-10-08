@@ -5,7 +5,7 @@ import useDarkMode from 'use-dark-mode';
 import colors from '../../utils/colors';
 
 const NameTag = () => {
-  const { value } = useDarkMode(false);
+  const { value: isDarkMode } = useDarkMode(false);
 
   return (
     <Link
@@ -18,7 +18,7 @@ const NameTag = () => {
       <p
         css={css`
         font-size: 1.25rem;
-        color: ${value ? colors.white : colors.black};
+        color: ${isDarkMode ? colors.white : colors.black};
         @media (min-width: 575px) {
           font-size: 1.5rem;
         }

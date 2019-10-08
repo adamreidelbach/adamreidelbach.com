@@ -34,7 +34,7 @@ const Hero = () => {
     }
   `)
 
-  const { value } = useDarkMode(false);
+  const { value: isDarkMode } = useDarkMode(false);
 
   return (
     <div>
@@ -49,19 +49,20 @@ const Hero = () => {
         <p>Austin, TX</p>
         <div css={css`
           margin-top: 0;
+          padding-bottom: 1rem;
 
           img {
             margin: 1rem 0.5rem 0rem;
           }
         `}>
           <a href="https://twitter.com/adamreidelbach" target="_blank" rel="noopener noreferrer">
-            <img src={value ? TwitterWhite : Twitter} alt="Twitter" />
+            <img src={isDarkMode ? TwitterWhite : Twitter} alt="Twitter" />
           </a>
           <a href="https://github.com/adamreidelbach" target="_blank" rel="noopener noreferrer">
-            <img src={value ? GithubWhite : Github} alt="Github" />
+            <img src={isDarkMode ? GithubWhite : Github} alt="Github" />
           </a>
           <a href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">
-            <img src={value ? LinkedInWhite : LinkedIn} alt="LinkedIn" />
+            <img src={isDarkMode ? LinkedInWhite : LinkedIn} alt="LinkedIn" />
           </a>
         </div>
       </div>

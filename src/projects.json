@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Slack-Zoom-Electron",
+    "description": "This app seeks to provide a convenient way to indicate to fellow Slack users that you are in a Zoom meeting.",
+    "url": "https://github.com/adamreidelbach/slack-zoom-electron"
+  },
+  {
+    "title": "Ron Swanson Slack App",
+    "description": "A Slack app that generates a random Ron Swanson quote.",
+    "url": "https://github.com/adamreidelbach/ron-swanson-slack-app"
+  }
+]

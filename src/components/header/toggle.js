@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import useDarkMode from 'use-dark-mode';
 
 const Toggle = ({ checked, onChange }) => {
-  const { value } = useDarkMode(false);
+  const { value: isDarkMode } = useDarkMode(false);
 
   return (
     <span
@@ -21,7 +21,7 @@ const Toggle = ({ checked, onChange }) => {
         onChange={onChange}
         id="dmcheck"
       />
-      <label htmlFor="dmcheck">{value ? '☀' : '🌒'}</label>
+      <label htmlFor="dmcheck">{isDarkMode ? '☀' : '🌒'}</label>
     </span>
   )
 };

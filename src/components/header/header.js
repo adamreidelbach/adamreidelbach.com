@@ -8,8 +8,8 @@ import { Match } from '@reach/router';
 import { Link } from 'gatsby';
 import Image from "gatsby-image";
 import { graphql, useStaticQuery } from 'gatsby';
-import colors from '../../utils/colors';
 import useDarkMode from 'use-dark-mode';
+import colors from '../../utils/colors';
 
 const PrimaryHeader = styled('div')`
   display: flex;
@@ -62,28 +62,28 @@ const Header = () => {
     }
   `)
 
-  const { value } = useDarkMode(false);
+  const { value: isDarkMode } = useDarkMode(false);
 
   const Header = styled('header')`
-    background-color: ${value ? colors.black : colors.eggshell};
-    padding: 0.5rem 2rem;
-
-    @media(min-width: 414px) {
-      padding: 0.5rem 3rem;
-    }
-    @media(min-width: 600px) {
-      padding: 0.5rem 4rem;
-    }
-    @media(min-width: 768px) {
-      padding: 0.5rem 5rem;
-    }
+    background-color: ${isDarkMode ? colors.black : colors.eggshell};
   `;
 
   return (
     <Header>
       <div css={css`
-        max-width: 650px;
         margin: 0 auto;
+        max-width: 900px;
+        padding: 1rem 2rem 0;
+
+        @media(min-width: 414px) {
+          padding: 1rem 3rem 0;
+        }
+        @media(min-width: 600px) {
+          padding: 1rem 4rem 0;
+        }
+        @media(min-width: 768px) {
+          padding: 1rem 5rem 0;
+        }
       `}>
         <Match path="/">
           {props =>

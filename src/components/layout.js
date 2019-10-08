@@ -5,11 +5,9 @@ import Helmet from 'react-helmet';
 import Header from './header/header';
 import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
-import useDarkMode from 'use-dark-mode';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isDarkMode }) => {
   const { title, description } = useSiteMetadata();
-  const { value } = useDarkMode(false);
 
   return (
     <div
@@ -50,12 +48,12 @@ const Layout = ({ children }) => {
               font-size: 0.85rem;
               border-radius: 0.3rem;
               padding: 0.15rem 0.2rem 0.05rem 0.2rem;
-              background-color: ${value ? colors.grey : colors.lightgrey};
-              color: ${value ? colors.offwhite : colors.black};
+              background-color: ${isDarkMode ? colors.grey : colors.lightgrey};
+              color: ${isDarkMode ? colors.offwhite : colors.black};
             }
 
             blockquote {
-              border-left: calc(0.2vw + 2px) solid ${value ? colors.black : colors.console};
+              border-left: calc(0.2vw + 2px) solid ${isDarkMode ? colors.black : colors.console};
               padding: 0.1% 6% 0.1% 4%;
               margin: 1.6rem 1vw;
             }
@@ -127,17 +125,17 @@ const Layout = ({ children }) => {
       <main
         css={css`
           padding: 0 2rem;
-          max-width: 900px;
           margin: 1rem auto;
+          max-width: 900px;
 
           @media (min-width: 414px) {
-            padding: 0.5rem 3rem;
+            padding: 0 3rem;
           }
           @media (min-width: 600px) {
-            padding: 0.5rem 4rem;
+            padding: 0 4rem;
           }
           @media (min-width: 768px) {
-            padding: 0.5rem 5rem;
+            padding: 0 5rem;
           }
         `}
       >

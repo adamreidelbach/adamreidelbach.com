@@ -21,31 +21,23 @@ export const query = graphql`
 `;
 
 const PostTemplate = ({ data: { mdx: post } }) => {
-  const { value } = useDarkMode(false);
+  const { value: isDarkMode } = useDarkMode(false);
 
   const BlogWrapper = styled('div')`
     a {
-      color: ${value ? colors.lightblue : colors.blue}
+      color: ${isDarkMode ? colors.lightblue : colors.blue}
     }
   `;
 
   return (
     <Layout>
       <BlogWrapper>
-        <div
-          css={css`
-        text-align: center;
-      `}
-        >
-          <h1>{post.frontmatter.title}</h1>
-          <p
-            css={css`
-          font-size: 0.75rem;
-        `}
-          >
-            Posted by {post.frontmatter.author}
-          </p>
-        </div>
+          <h1 css={css`
+            text-align: center;
+            margin-bottom: 2rem;
+          `}>
+            {post.frontmatter.title}
+          </h1>
         <MDXRenderer>{post.body}</MDXRenderer>
         <ReadLink to="/">&larr; back to home</ReadLink>
       </BlogWrapper>
