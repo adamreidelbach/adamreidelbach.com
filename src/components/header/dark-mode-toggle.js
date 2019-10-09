@@ -28,7 +28,7 @@ const DarkModeToggle = () => {
 
   return (
     <DarkModeWrapper>
-      <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
+      <Toggle checked={darkMode.value} onChange={darkMode.toggle} isDarkMode={darkMode.value} />
     </DarkModeWrapper>
   );
 };

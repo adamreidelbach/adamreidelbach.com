@@ -1,10 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import useDarkMode from 'use-dark-mode';
 
-const Toggle = ({ checked, onChange }) => {
-  const { value: isDarkMode } = useDarkMode(false);
-
+const Toggle = ({ checked, onChange, isDarkMode }) => {
   return (
     <span
       css={css`

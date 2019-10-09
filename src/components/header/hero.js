@@ -37,7 +37,7 @@ const Hero = () => {
   const { value: isDarkMode } = useDarkMode(false);
 
   return (
-    <div>
+    <div css={css`margin-top: 0;`}>
       <HeroImg Tag="section" fluid={image.sharp.fluid} alt="Adam Reidelbach" />
       <div css={css`
         text-align: center;

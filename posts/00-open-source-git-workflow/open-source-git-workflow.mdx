@@ -45,8 +45,9 @@ After you make this copy (fork) of the repo, this new location is where you will
 
 * Fork the repo you'll be working with to your desired account.
 * [Clone](https://help.github.com/en/articles/cloning-a-repository) your forked repo locally by running `git clone https://github.com/your-username/name-of-repo.git`
- - Navigate to your new repo with  `cd name-of-repo`
- - Run `git status && git remote -v` in your terminal and you will see the following:
+* Navigate to your new repo with  `cd name-of-repo`
+* Run `git status && git remote -v` in your terminal and you will see the following:
+
 ```shell
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -69,16 +70,19 @@ upstream  https://github.com/not-your-username/name-of-repo.git (push)
 ```
 
 * Next, we need to manually sync up with `upstream` by reaching out to it. To do this, run `git fetch upstream`. After that, if you run `git status`, it still says:
+
 ```shell
 On branch master
 Your branch is up to date with 'origin/master'.
 ```
 
 * Let's resolve this by ensuring our local master is pointing to `upstream`'s master. Run `git branch --set-upstream-to=upstream/master master` and then `git status` once again. Since this has been recently cloned, no changes are likely, so you should see something like this:
+
 ```shell
 On branch master
 Your branch is up to date with 'upstream/master'.
 ```
+
 > * Now that this this is setup, if your branch were to fall out of date, you can simply run `git pull`, to pull in any changes.
 > * Additionally, I use a tool called [Spaceship Prompt](https://github.com/denysdovhan/spaceship-prompt), as it gives me some helpful visual representations of the status of my master branch, among many other features.
 

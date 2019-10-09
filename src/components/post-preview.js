@@ -15,7 +15,6 @@ const PostPreview = ({ post, isDarkMode }) => {
     >
       <Link
         to={post.slug}
-        className="test"
         css={css`
           margin: 1rem 1rem 0 0;
           width: 300px;
