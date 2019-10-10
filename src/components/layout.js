@@ -7,6 +7,7 @@ import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
 
 const Layout = ({ children, isDarkMode }) => {
+  console.log("TCL: Layout -> children", children)
   const { title, description } = useSiteMetadata();
 
   return (
@@ -37,8 +38,6 @@ const Layout = ({ children, isDarkMode }) => {
               'Segoe UI Emoji', 'Segoe UI Symbol';
             font-size: 18px;
             line-height: 1.4;
-            background-color: ${isDarkMode ? colors.black : colors.white};
-            color: ${isDarkMode ? colors.eggshell : colors.black};
             transition: background-color 0.5s ease;
 
             /* remove margin for the main div that Gatbsy mounts into */
@@ -60,6 +59,22 @@ const Layout = ({ children, isDarkMode }) => {
                 ${isDarkMode ? colors.black : colors.console};
               padding: 0.1% 6% 0.1% 4%;
               margin: 1.6rem 1vw;
+            }
+
+            .light-mode {
+              background-color: ${colors.white};
+              color: ${colors.black};
+              transition: all 0.3s ease;
+              a {
+                color: ${colors.black};
+              }
+            }
+            .dark-mode {
+              background-color: ${colors.black};
+              color: ${colors.eggshell};
+              a {
+                color: ${colors.eggshell};
+              }
             }
           }
 
