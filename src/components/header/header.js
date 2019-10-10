@@ -8,8 +8,6 @@ import { Match } from '@reach/router';
 import { Link } from 'gatsby';
 import Image from "gatsby-image";
 import { graphql, useStaticQuery } from 'gatsby';
-import useDarkMode from 'use-dark-mode';
-import colors from '../../utils/colors';
 
 const PrimaryHeader = styled('div')`
   display: flex;
@@ -62,12 +60,8 @@ const Header = () => {
     }
   `)
 
-  const { value: isDarkMode } = useDarkMode(false);
-
   return (
-    <div css={css`
-      background-color: ${isDarkMode ? colors.black : colors.eggshell};
-    `}>
+    <div>
       <div css={css`
         margin: 0 auto;
         max-width: 900px;

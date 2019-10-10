@@ -60,21 +60,21 @@ const Layout = ({ children, isDarkMode }) => {
               padding: 0.1% 6% 0.1% 4%;
               margin: 1.6rem 1vw;
             }
+          }
 
-            .light-mode {
-              background-color: ${colors.white};
+        .light-mode {
+            background-color: ${colors.white};
+            color: ${colors.black};
+            transition: all 0.3s ease;
+            a {
               color: ${colors.black};
-              transition: all 0.3s ease;
-              a {
-                color: ${colors.black};
-              }
             }
-            .dark-mode {
-              background-color: ${colors.black};
+          }
+          .dark-mode {
+            background-color: ${colors.black};
+            color: ${colors.eggshell};
+            a {
               color: ${colors.eggshell};
-              a {
-                color: ${colors.eggshell};
-              }
             }
           }
 
