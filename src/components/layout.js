@@ -76,6 +76,15 @@ const Layout = ({ children, isDarkMode }) => {
             a {
               color: ${colors.eggshell};
             }
+            p {
+              color: ${colors.eggshell}
+            }
+            img {
+              fill: ${colors.eggshell};
+            }
+            hr {
+              background-color: ${colors.eggshell}
+            }
           }
 
           h1,
