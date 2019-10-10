@@ -61,7 +61,7 @@ const Header = () => {
   `)
 
   return (
-    <div>
+    <>
       <div css={css`
         margin: 0 auto;
         max-width: 900px;
@@ -108,7 +108,7 @@ const Header = () => {
             )
         }
       </Match>
-    </div>
+    </>
   );
 };
 

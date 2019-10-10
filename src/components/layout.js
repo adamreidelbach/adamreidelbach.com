@@ -7,7 +7,7 @@ import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
 
 const Layout = ({ children, isDarkMode }) => {
-  console.log("TCL: Layout -> children", children)
+  console.log('TCL: Layout -> children', children);
   const { title, description } = useSiteMetadata();
 
   return (
@@ -62,7 +62,7 @@ const Layout = ({ children, isDarkMode }) => {
             }
           }
 
-        .light-mode {
+          .light-mode {
             background-color: ${colors.white};
             color: ${colors.black};
             transition: all 0.3s ease;
@@ -147,7 +147,7 @@ const Layout = ({ children, isDarkMode }) => {
           }
         `}
       >
-        <CodeContentWrapper children={children} />
+        <CodeContentWrapper>{children}</CodeContentWrapper>
       </main>
     </div>
   );

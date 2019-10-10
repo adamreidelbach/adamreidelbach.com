@@ -9,6 +9,10 @@ const ProjectPreview = ({ project, isDarkMode }) => {
         display: flex;
         margin-top: 0;
         padding-bottom: 1rem;
+
+        :last-of-type {
+          padding-bottom: 0;
+        }
       `}
     >
       <div

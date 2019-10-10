@@ -18,7 +18,7 @@ export default () => {
       <Layout isDarkMode={isDarkMode}>
         <h2
           css={css`
-            margin: 1rem 0 1rem 0;
+            margin: 0 0 1rem 0;
           `}
         >
           Writing
@@ -37,7 +37,7 @@ export default () => {
 
         <h2
           css={css`
-            margin: 1.5rem 0 1rem 0;
+            margin: 2rem 0 1rem 0;
           `}
         >
           Projects
