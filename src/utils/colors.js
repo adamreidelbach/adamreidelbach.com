@@ -8,5 +8,5 @@ export default {
   grey: '#4c566a',
   lightgrey: '#A1ADC4',
   offwhite: 'rgba(255, 255, 255, 0.86)',
-  console: '#011627',
+  console: '#011627'
 };

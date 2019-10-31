@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Match } from '@reach/router';
 import { Link } from 'gatsby';
-import Image from "gatsby-image";
+import Image from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const PrimaryHeader = styled('div')`
@@ -29,11 +29,11 @@ const InnerHeader = styled('div')`
     font-size: 1rem;
     margin-left: 0.5rem;
 
-    @media(min-width: 350px) {
+    @media (min-width: 350px) {
       font-size: 1.15rem;
     }
 
-    @media(min-width: 414px) {
+    @media (min-width: 414px) {
       font-size: 1.25rem;
       margin-left: 1rem;
     }
@@ -52,31 +52,33 @@ const Header = () => {
     query {
       image: file(relativePath: { eq: "hero.jpg" }) {
         sharp: childImageSharp {
-          fixed(width:60) {
+          fixed(width: 60) {
             ...GatsbyImageSharpFixed
           }
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
-      <div css={css`
-        margin: 0 auto;
-        max-width: 900px;
-        padding: 1rem 2rem;
+      <div
+        css={css`
+          margin: 0 auto;
+          max-width: 900px;
+          padding: 1rem 2rem;
 
-        @media(min-width: 414px) {
-          padding: 1rem 3rem;
-        }
-        @media(min-width: 600px) {
-          padding: 1rem 4rem;
-        }
-        @media(min-width: 768px) {
-          padding: 1rem 5rem;
-        }
-      `}>
+          @media (min-width: 414px) {
+            padding: 1rem 3rem;
+          }
+          @media (min-width: 600px) {
+            padding: 1rem 4rem;
+          }
+          @media (min-width: 768px) {
+            padding: 1rem 5rem;
+          }
+        `}
+      >
         <Match path="/">
           {props =>
             props.match ? (
@@ -85,29 +87,29 @@ const Header = () => {
                 <DarkModeToggle />
               </PrimaryHeader>
             ) : (
-                <SecondaryHeader>
-                  <InnerHeader>
-                    <Link to="/" css={css`
+              <SecondaryHeader>
+                <InnerHeader>
+                  <Link
+                    to="/"
+                    css={css`
                       height: 60px;
-                    `}>
-                      <HeroImg Tag="section" fixed={image.sharp.fixed} alt="Adam Reidelbach" />
-                    </Link>
-                    <NameTag />
-                  </InnerHeader>
-                  <DarkModeToggle />
-                </SecondaryHeader>
-              )}
+                    `}
+                  >
+                    <HeroImg
+                      Tag="section"
+                      fixed={image.sharp.fixed}
+                      alt="Adam Reidelbach"
+                    />
+                  </Link>
+                  <NameTag />
+                </InnerHeader>
+                <DarkModeToggle />
+              </SecondaryHeader>
+            )
+          }
         </Match>
       </div>
-      <Match path="/">
-        {props =>
-          props.match ? (
-            <Hero />
-          ) : (
-              null
-            )
-        }
-      </Match>
+      <Match path="/">{props => (props.match ? <Hero /> : null)}</Match>
     </>
   );
 };

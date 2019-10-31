@@ -7,7 +7,6 @@ import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
 
 const Layout = ({ children, isDarkMode }) => {
-  console.log('TCL: Layout -> children', children);
   const { title, description } = useSiteMetadata();
 
   return (
@@ -77,13 +76,10 @@ const Layout = ({ children, isDarkMode }) => {
               color: ${colors.eggshell};
             }
             p {
-              color: ${colors.eggshell}
-            }
-            img {
-              fill: ${colors.eggshell};
+              color: ${colors.eggshell};
             }
             hr {
-              background-color: ${colors.eggshell}
+              background-color: ${colors.eggshell};
             }
           }
 
@@ -118,6 +114,7 @@ const Layout = ({ children, isDarkMode }) => {
             cursor: pointer;
             vertical-align: 2px;
             outline: none;
+            display: none;
 
             & + label {
               font-size: 1.25rem;

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import useDarkMode from 'use-dark-mode';
-import Image from "gatsby-image";
+import Image from 'gatsby-image';
 import Twitter from '../../../images/twitter.svg';
 import Github from '../../../images/github.svg';
 import LinkedIn from '../../../images/linkedin.svg';
@@ -21,6 +21,15 @@ const HeroImg = styled(Image)`
   }
 `;
 
+const ContactImages = styled('div')`
+  margin-top: 0;
+  padding-bottom: 1rem;
+
+  img {
+    margin: 1rem 0.5rem 0rem;
+  }
+`;
+
 const Hero = () => {
   const { image } = useStaticQuery(graphql`
     query {
@@ -32,42 +41,54 @@ const Hero = () => {
         }
       }
     }
-  `)
+  `);
 
   const { value: isDarkMode } = useDarkMode(false);
+  console.log(isDarkMode);
 
   return (
-    <div css={css`margin-top: 0;`}>
+    <div
+      css={css`
+        margin-top: 0;
+      `}
+    >
       <HeroImg Tag="section" fluid={image.sharp.fluid} alt="Adam Reidelbach" />
-      <div css={css`
-        text-align: center;
-        p {
-          margin-top: 0;
-        }
-      `}>
+      <div
+        css={css`
+          text-align: center;
+          p {
+            margin-top: 0;
+          }
+        `}
+      >
         <p>Software Developer</p>
         <p>Austin, TX</p>
-        <div css={css`
-          margin-top: 0;
-          padding-bottom: 1rem;
-
-          img {
-            margin: 1rem 0.5rem 0rem;
-          }
-        `}>
-          <a href="https://twitter.com/adamreidelbach" target="_blank" rel="noopener noreferrer">
+        <ContactImages>
+          <a
+            href="https://twitter.com/adamreidelbach"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={isDarkMode ? TwitterWhite : Twitter} alt="Twitter" />
           </a>
-          <a href="https://github.com/adamreidelbach" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/adamreidelbach"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={isDarkMode ? GithubWhite : Github} alt="Github" />
           </a>
-          <a href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/adamreidelbach/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={isDarkMode ? LinkedInWhite : LinkedIn} alt="LinkedIn" />
           </a>
-        </div>
+        </ContactImages>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Hero;

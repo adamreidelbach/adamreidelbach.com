@@ -12,7 +12,7 @@ const components = {
     } else {
       return <pre {...preProps} />;
     }
-  },
+  }
 };
 
 const CodeContentWrapper = ({ children }) => (

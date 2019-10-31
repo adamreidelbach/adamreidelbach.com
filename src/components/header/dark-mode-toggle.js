@@ -16,7 +16,7 @@ const DarkModeWrapper = styled('div')`
     }
   }
 
-  @media(min-width: 375px) {
+  @media (min-width: 375px) {
     & > button {
       font-size: 1.2rem;
     }
@@ -28,7 +28,11 @@ const DarkModeToggle = () => {
 
   return (
     <DarkModeWrapper>
-      <Toggle checked={darkMode.value} onChange={darkMode.toggle} isDarkMode={darkMode.value} />
+      <Toggle
+        checked={darkMode.value}
+        onChange={darkMode.toggle}
+        isDarkMode={darkMode.value}
+      />
     </DarkModeWrapper>
   );
 };

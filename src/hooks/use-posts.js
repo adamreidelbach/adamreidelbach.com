@@ -28,7 +28,7 @@ const usePosts = () => {
     author: post.frontmatter.author,
     slug: post.frontmatter.slug,
     image: post.frontmatter.image,
-    excerpt: post.excerpt,
+    excerpt: post.excerpt
   }));
 };
 
