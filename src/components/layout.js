@@ -141,7 +141,7 @@ const Layout = ({ children, isDarkMode, toggleDarkMode, componentMounted }) => {
       <main
         css={css`
           padding: 0 2rem;
-          margin: 1rem auto 4rem;
+          margin: 1rem auto 3rem;
           max-width: 900px;
 
           @media (min-width: 414px) {
