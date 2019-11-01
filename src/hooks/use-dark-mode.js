@@ -8,7 +8,9 @@ const useDarkMode = () => {
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const setTheme = mode => {
-    window.localStorage.setItem('darkMode', mode);
+    if (typeof window !== undefined) {
+      window.localStorage.setItem('darkMode', mode);
+    }
     setDarkMode(mode);
     document.body.classList.add(mode ? 'dark-mode' : 'light-mode');
     document.body.classList.remove(mode ? 'light-mode' : 'dark-mode');
