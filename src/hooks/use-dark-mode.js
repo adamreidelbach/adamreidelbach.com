@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react';
 const useDarkMode = () => {
   const [isDarkMode, setDarkMode] = useState(false);
   const [componentMounted, setComponentMounted] = useState(false);
-  const userPrefersDarkTheme =
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let userPrefersDarkTheme;
+  if (typeof window !== 'undefined') {
+    userPrefersDarkTheme =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 
   const setTheme = mode => {
-    if (typeof window !== undefined) {
+    if (typeof window !== 'undefined') {
       window.localStorage.setItem('darkMode', mode);
     }
     setDarkMode(mode);
@@ -25,7 +28,10 @@ const useDarkMode = () => {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('darkMode');
+    let localTheme;
+    if (typeof window !== 'undefined') {
+      localTheme = window.localStorage.getItem('darkMode');
+    }
     if (localTheme !== null) {
       setTheme(localTheme === 'true');
     } else if (userPrefersDarkTheme !== null) {
