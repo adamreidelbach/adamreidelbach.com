@@ -66,16 +66,16 @@ const Header = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
         css={css`
           margin: 0 auto;
           max-width: 900px;
-          padding: 1rem 2rem;
+          padding: 1.5 2rem 2rem;
 
           @media (min-width: 414px) {
-            padding: 1rem 3rem;
+            padding: 1.5rem 3rem 2rem;
           }
           @media (min-width: 600px) {
-            padding: 1rem 4rem;
+            padding: 1.5rem 4rem 2rem;
           }
           @media (min-width: 768px) {
-            padding: 1rem 5rem;
+            padding: 1.5rem 5rem 2rem;
           }
         `}
       >
