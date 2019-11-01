@@ -26,7 +26,6 @@
     "gatsby-plugin-mdx": "^1.0.33",
     "gatsby-plugin-react-helmet": "^3.1.4",
     "gatsby-plugin-sharp": "^2.2.21",
-    "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-remark-images": "^3.1.21",
     "gatsby-source-filesystem": "^2.1.21",
     "gatsby-transformer-sharp": "^2.2.14",
@@ -34,8 +33,7 @@
     "prism-react-renderer": "^0.1.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1",
-    "use-dark-mode": "^2.3.1"
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",

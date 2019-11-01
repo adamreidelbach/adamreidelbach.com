@@ -1,7 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-const Toggle = ({ checked, onChange, isDarkMode }) => {
+const Toggle = ({ checked, onChange, isDarkMode, componentMounted }) => {
+  if (!componentMounted) {
+    return <div />;
+  }
   return (
     <span
       css={css`
@@ -20,7 +23,7 @@ const Toggle = ({ checked, onChange, isDarkMode }) => {
       />
       <label htmlFor="dmcheck">{isDarkMode ? '☀' : '🌒'}</label>
     </span>
-  )
+  );
 };
 
 export default Toggle;

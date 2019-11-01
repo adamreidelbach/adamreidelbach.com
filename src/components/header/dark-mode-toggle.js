@@ -1,6 +1,5 @@
 import React from 'react';
 import Toggle from './toggle';
-import useDarkMode from 'use-dark-mode';
 import styled from '@emotion/styled';
 
 const DarkModeWrapper = styled('div')`
@@ -23,15 +22,14 @@ const DarkModeWrapper = styled('div')`
   }
 `;
 
-const DarkModeToggle = () => {
-  const darkMode = useDarkMode(false);
-
+const DarkModeToggle = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
   return (
     <DarkModeWrapper>
       <Toggle
-        checked={darkMode.value}
-        onChange={darkMode.toggle}
-        isDarkMode={darkMode.value}
+        checked={isDarkMode}
+        onChange={() => toggleDarkMode()}
+        isDarkMode={isDarkMode}
+        componentMounted={componentMounted}
       />
     </DarkModeWrapper>
   );

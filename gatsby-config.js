@@ -14,22 +14,15 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js')
         },
-        gatsbyRemarkPlugins: [{
-          resolve: `gatsby-remark-images`,
-          options: {
-            maxWidth: 568
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 568
+            }
           }
-        }],
+        ],
         plugins: [{ resolve: 'gatsby-remark-images' }]
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-use-dark-mode',
-      options: {
-        classNameDark: 'dark-mode',
-        classNameLight: 'light-mode',
-        storageKey: 'darkMode',
-        minify: true,
       }
     },
     {
@@ -53,4 +46,4 @@ module.exports = {
       }
     }
   ]
-}
+};

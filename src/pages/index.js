@@ -7,15 +7,20 @@ import PostPreview from '../components/post-preview';
 import usePosts from '../hooks/use-posts';
 import projects from '../projects.json';
 import colors from '../utils/colors';
-import useDarkMode from 'use-dark-mode';
+import useDarkMode from '../hooks/use-dark-mode';
 
 export default () => {
   const posts = usePosts();
-  const { value: isDarkMode } = useDarkMode(false);
+  // @todo - remove prop drilling and use context API
+  const [isDarkMode, toggleDarkMode, componentMounted] = useDarkMode();
 
   return (
     <>
-      <Layout isDarkMode={isDarkMode}>
+      <Layout
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        componentMounted={componentMounted}
+      >
         <h2
           css={css`
             margin: 0 0 1rem 0;

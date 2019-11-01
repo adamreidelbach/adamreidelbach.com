@@ -1,4 +1,5 @@
 import React from 'react';
+import useDarkMode from '../hooks/use-dark-mode';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -6,7 +7,6 @@ import Layout from '../components/layout';
 import ReadLink from '../components/read-link';
 import styled from '@emotion/styled';
 import colors from '../utils/colors';
-import useDarkMode from 'use-dark-mode';
 
 export const query = graphql`
   query($slug: String!) {
@@ -21,7 +21,8 @@ export const query = graphql`
 `;
 
 const PostTemplate = ({ data: { mdx: post } }) => {
-  const { value: isDarkMode } = useDarkMode(false);
+  // @todo - remove prop drilling and use context API
+  const [isDarkMode, toggleDarkMode, componentMounted] = useDarkMode();
 
   const BlogWrapper = styled('div')`
     a {
@@ -30,7 +31,11 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   `;
 
   return (
-    <Layout>
+    <Layout
+      isDarkMode={isDarkMode}
+      toggleDarkMode={toggleDarkMode}
+      componentMounted={componentMounted}
+    >
       <BlogWrapper>
         <h1
           css={css`

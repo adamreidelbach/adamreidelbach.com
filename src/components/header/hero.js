@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
-import useDarkMode from 'use-dark-mode';
 import Image from 'gatsby-image';
 import Twitter from '../../../images/twitter.svg';
 import Github from '../../../images/github.svg';
@@ -30,7 +29,7 @@ const ContactImages = styled('div')`
   }
 `;
 
-const Hero = () => {
+const Hero = ({ isDarkMode }) => {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "hero.jpg" }) {
@@ -42,9 +41,6 @@ const Hero = () => {
       }
     }
   `);
-
-  const { value: isDarkMode } = useDarkMode(false);
-  console.log(isDarkMode);
 
   return (
     <div

@@ -6,7 +6,7 @@ import Header from './header/header';
 import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
 
-const Layout = ({ children, isDarkMode }) => {
+const Layout = ({ children, isDarkMode, toggleDarkMode, componentMounted }) => {
   const { title, description } = useSiteMetadata();
 
   return (
@@ -37,7 +37,6 @@ const Layout = ({ children, isDarkMode }) => {
               'Segoe UI Emoji', 'Segoe UI Symbol';
             font-size: 18px;
             line-height: 1.4;
-            transition: background-color 0.5s ease;
 
             /* remove margin for the main div that Gatbsy mounts into */
             > div {
@@ -64,7 +63,6 @@ const Layout = ({ children, isDarkMode }) => {
           .light-mode {
             background-color: ${colors.white};
             color: ${colors.black};
-            transition: all 0.3s ease;
             a {
               color: ${colors.black};
             }
@@ -135,7 +133,11 @@ const Layout = ({ children, isDarkMode }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header />
+      <Header
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        componentMounted={componentMounted}
+      />
       <main
         css={css`
           padding: 0 2rem;
