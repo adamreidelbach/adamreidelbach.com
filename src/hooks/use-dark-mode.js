@@ -11,6 +11,7 @@ const useDarkMode = () => {
   }
 
   const setTheme = mode => {
+    console.log('TCL: useDarkMode -> mode', mode);
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('darkMode', mode);
     }
