@@ -12,15 +12,11 @@ import useDarkMode from '../hooks/use-dark-mode';
 export default () => {
   const posts = usePosts();
   // @todo - remove prop drilling and use context API
-  const [isDarkMode, toggleDarkMode, componentMounted] = useDarkMode();
+  const [localTheme, componentMounted] = useDarkMode();
 
   return (
     <>
-      <Layout
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-        componentMounted={componentMounted}
-      >
+      <Layout localTheme={localTheme} componentMounted={componentMounted}>
         <h2
           css={css`
             margin: 0 0 1rem 0;
@@ -29,14 +25,14 @@ export default () => {
           Writing
         </h2>
         {posts.map(post => (
-          <PostPreview key={post.slug} post={post} isDarkMode={isDarkMode} />
+          <PostPreview key={post.slug} post={post} localTheme={localTheme} />
         ))}
 
         <hr
           css={css`
             border: 0;
             height: 1px;
-            background: ${isDarkMode ? colors.white : colors.black};
+            background: ${localTheme === 'dark' ? colors.white : colors.black};
           `}
         />
 
@@ -51,7 +47,7 @@ export default () => {
           <ProjectPreview
             key={project.title}
             project={project}
-            isDarkMode={isDarkMode}
+            localTheme={localTheme}
           />
         ))}
       </Layout>

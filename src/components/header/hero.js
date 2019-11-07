@@ -29,7 +29,7 @@ const ContactImages = styled('div')`
   }
 `;
 
-const Hero = ({ isDarkMode }) => {
+const Hero = ({ localTheme }) => {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "hero.jpg" }) {
@@ -65,21 +65,30 @@ const Hero = ({ isDarkMode }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={isDarkMode ? TwitterWhite : Twitter} alt="Twitter" />
+            <img
+              src={localTheme === 'dark' ? TwitterWhite : Twitter}
+              alt="Twitter"
+            />
           </a>
           <a
             href="https://github.com/adamreidelbach"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={isDarkMode ? GithubWhite : Github} alt="Github" />
+            <img
+              src={localTheme === 'dark' ? GithubWhite : Github}
+              alt="Github"
+            />
           </a>
           <a
             href="https://www.linkedin.com/in/adamreidelbach/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={isDarkMode ? LinkedInWhite : LinkedIn} alt="LinkedIn" />
+            <img
+              src={localTheme === 'dark' ? LinkedInWhite : LinkedIn}
+              alt="LinkedIn"
+            />
           </a>
         </ContactImages>
       </div>

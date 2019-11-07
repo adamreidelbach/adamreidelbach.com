@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 import colors from '../utils/colors';
 
-const PostPreview = ({ post, isDarkMode }) => {
+const PostPreview = ({ post, localTheme }) => {
   return (
     <article
       css={css`
@@ -35,7 +35,7 @@ const PostPreview = ({ post, isDarkMode }) => {
           <Link
             to={post.slug}
             css={css`
-              color: ${isDarkMode ? colors.white : colors.black};
+              color: ${localTheme === 'dark' ? colors.white : colors.black};
             `}
           >
             {post.title}

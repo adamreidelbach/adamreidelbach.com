@@ -22,15 +22,10 @@ const DarkModeWrapper = styled('div')`
   }
 `;
 
-const DarkModeToggle = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
+const DarkModeToggle = ({ localTheme, componentMounted }) => {
   return (
     <DarkModeWrapper>
-      <Toggle
-        checked={isDarkMode}
-        onChange={() => toggleDarkMode()}
-        isDarkMode={isDarkMode}
-        componentMounted={componentMounted}
-      />
+      <Toggle localTheme={localTheme} componentMounted={componentMounted} />
     </DarkModeWrapper>
   );
 };

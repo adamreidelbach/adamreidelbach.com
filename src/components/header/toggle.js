@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-const Toggle = ({ checked, onChange, isDarkMode, componentMounted }) => {
+const Toggle = ({ localTheme, componentMounted }) => {
   if (!componentMounted) {
     return <div />;
   }
@@ -17,11 +17,13 @@ const Toggle = ({ checked, onChange, isDarkMode, componentMounted }) => {
       <input
         className="dmcheck"
         type="checkbox"
-        checked={checked}
-        onChange={onChange}
+        checked={localTheme === 'dark'}
+        onChange={e =>
+          window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')
+        }
         id="dmcheck"
       />
-      <label htmlFor="dmcheck">{isDarkMode ? '☀' : '🌒'}</label>
+      <label htmlFor="dmcheck">{localTheme === 'dark' ? '☀' : '🌒'}</label>
     </span>
   );
 };

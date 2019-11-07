@@ -6,7 +6,7 @@ import Header from './header/header';
 import useSiteMetadata from '../hooks/use-sitemetadata';
 import CodeContentWrapper from './code-content-wrapper';
 
-const Layout = ({ children, isDarkMode, toggleDarkMode, componentMounted }) => {
+const Layout = ({ children, localTheme, componentMounted }) => {
   const { title, description } = useSiteMetadata();
 
   return (
@@ -48,26 +48,28 @@ const Layout = ({ children, isDarkMode, toggleDarkMode, componentMounted }) => {
               font-size: 0.85rem;
               border-radius: 0.3rem;
               padding: 0.15rem 0.2rem 0.05rem 0.2rem;
-              background-color: ${isDarkMode ? colors.grey : colors.lightgrey};
-              color: ${isDarkMode ? colors.offwhite : colors.black};
+              background-color: ${localTheme === 'dark'
+                ? colors.grey
+                : colors.lightgrey};
+              color: ${localTheme === 'dark' ? colors.offwhite : colors.black};
             }
 
             blockquote {
               border-left: calc(0.2vw + 2px) solid
-                ${isDarkMode ? colors.black : colors.console};
+                ${localTheme === 'dark' ? colors.black : colors.console};
               padding: 0.1% 6% 0.1% 4%;
               margin: 1.6rem 1vw;
             }
           }
 
-          .light-mode {
+          .light {
             background-color: ${colors.white};
             color: ${colors.black};
             a {
               color: ${colors.black};
             }
           }
-          .dark-mode {
+          .dark {
             background-color: ${colors.black};
             color: ${colors.eggshell};
             a {
@@ -133,11 +135,7 @@ const Layout = ({ children, isDarkMode, toggleDarkMode, componentMounted }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <Header
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-        componentMounted={componentMounted}
-      />
+      <Header localTheme={localTheme} componentMounted={componentMounted} />
       <main
         css={css`
           padding: 0 2rem;

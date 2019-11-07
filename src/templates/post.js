@@ -22,20 +22,16 @@ export const query = graphql`
 
 const PostTemplate = ({ data: { mdx: post } }) => {
   // @todo - remove prop drilling and use context API
-  const [isDarkMode, toggleDarkMode, componentMounted] = useDarkMode();
+  const [localTheme, componentMounted] = useDarkMode();
 
   const BlogWrapper = styled('div')`
     a {
-      color: ${isDarkMode ? colors.lightblue : colors.blue};
+      color: ${localTheme === 'dark' ? colors.lightblue : colors.blue};
     }
   `;
 
   return (
-    <Layout
-      isDarkMode={isDarkMode}
-      toggleDarkMode={toggleDarkMode}
-      componentMounted={componentMounted}
-    >
+    <Layout localTheme={localTheme} componentMounted={componentMounted}>
       <BlogWrapper>
         <h1
           css={css`

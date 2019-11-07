@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import colors from '../utils/colors';
 
-const ProjectPreview = ({ project, isDarkMode }) => {
+const ProjectPreview = ({ project, localTheme }) => {
   return (
     <article
       css={css`
@@ -24,7 +24,7 @@ const ProjectPreview = ({ project, isDarkMode }) => {
           <a
             href={project.url}
             css={css`
-              color: ${isDarkMode ? colors.white : colors.black};
+              color: ${localTheme === 'dark' ? colors.white : colors.black};
             `}
             target="_blank"
             rel="noopener noreferrer"

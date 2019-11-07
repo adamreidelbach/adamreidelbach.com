@@ -47,7 +47,7 @@ const HeroImg = styled(Image)`
   }
 `;
 
-const Header = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
+const Header = ({ localTheme, componentMounted }) => {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "hero.jpg" }) {
@@ -83,10 +83,9 @@ const Header = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
           {props =>
             props.match ? (
               <PrimaryHeader>
-                <NameTag isDarkMode={isDarkMode} />
+                <NameTag localTheme={localTheme} />
                 <DarkModeToggle
-                  isDarkMode={isDarkMode}
-                  toggleDarkMode={toggleDarkMode}
+                  localTheme={localTheme}
                   componentMounted={componentMounted}
                 />
               </PrimaryHeader>
@@ -105,11 +104,10 @@ const Header = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
                       alt="Adam Reidelbach"
                     />
                   </Link>
-                  <NameTag isDarkMode={isDarkMode} />
+                  <NameTag localTheme={localTheme} />
                 </InnerHeader>
                 <DarkModeToggle
-                  isDarkMode={isDarkMode}
-                  toggleDarkMode={toggleDarkMode}
+                  localTheme={localTheme}
                   componentMounted={componentMounted}
                 />
               </SecondaryHeader>
@@ -118,7 +116,7 @@ const Header = ({ isDarkMode, toggleDarkMode, componentMounted }) => {
         </Match>
       </div>
       <Match path="/">
-        {props => (props.match ? <Hero isDarkMode={isDarkMode} /> : null)}
+        {props => (props.match ? <Hero localTheme={localTheme} /> : null)}
       </Match>
     </>
   );
