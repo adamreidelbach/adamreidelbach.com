@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adam Reidelbach — Staff Software Engineer</title>
     <meta name="description" content="Staff software engineer focused on frontend architecture, product engineering, and developer experience.">
+    <meta name="theme-color" content="#050505">
     <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 
@@ -14,51 +15,85 @@
     <meta property="og:url" content="https://adamreidelbach.com/">
     <meta property="og:image" content="https://adamreidelbach.com/public/og.png">
     <meta property="og:image:alt" content="Adam Reidelbach, Staff Software Engineer">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Adam Reidelbach — Staff Software Engineer">
     <meta name="twitter:description" content="Frontend architecture, product engineering, and developer experience.">
     <meta name="twitter:image" content="https://adamreidelbach.com/public/og.png">
   </head>
   <body>
-    <main class="shell">
-      <header>
-        <a href="#top" class="brand" aria-label="Adam Reidelbach, home">
-          <span class="brand-mark">A</span>
-          <span>Adam Reidelbach</span>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <main class="page" id="top">
+      <aside class="sidebar" aria-label="About Adam">
+        <a class="monogram" href="#top" aria-label="Adam Reidelbach, home">
+          <span aria-hidden="true">A</span>
         </a>
-      </header>
 
-      <section class="hero" id="top">
-        <p class="role">Staff Software Engineer</p>
-        <h1>Building web products that hold up at scale.</h1>
-        <p class="summary">
-          I help teams build and scale consumer-facing web applications, with a focus on
-          frontend architecture, product engineering, and developer experience.
-        </p>
+        <dl class="details">
+          <div>
+            <dt>Location</dt>
+            <dd>Austin, Texas</dd>
+          </div>
+          <div>
+            <dt>Currently at</dt>
+            <dd>
+              <a href="https://www.favordelivery.com/" target="_blank" rel="noopener noreferrer">
+                Favor<span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Local time</dt>
+            <dd><time id="local-time">Austin time</time></dd>
+          </div>
+        </dl>
+      </aside>
 
-        <div class="cta-row">
-          <a class="primary" href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn <span aria-hidden="true">↗</span>
-          </a>
+      <section class="content" id="content" aria-labelledby="page-title">
+        <header class="statement">
+          <h1 id="page-title">
+            <span>I build software,</span>
+            <span>and I work on</span>
+            <span>how software gets built.</span>
+          </h1>
+          <p class="supporting">Focused on frontend architecture, product engineering, and developer experience.</p>
+        </header>
+
+        <div class="intro">
+          <p class="name">Adam Reidelbach</p>
+          <p class="role">Staff Software Engineer</p>
         </div>
+
+        <nav class="links" aria-label="Find Adam online">
+          <a href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        </nav>
       </section>
-
-      <section class="focus" aria-labelledby="focus-heading">
-        <div class="focus-label">
-          <p id="focus-heading">Current focus</p>
-          <span>2026</span>
-        </div>
-        <div class="focus-grid">
-          <div class="focus-item"><span>01</span><p>Frontend architecture</p></div>
-          <div class="focus-item"><span>02</span><p>Product engineering</p></div>
-          <div class="focus-item"><span>03</span><p>Engineering standards &amp; tooling</p></div>
-        </div>
-      </section>
-
-      <footer>
-        <span>Austin, Texas</span>
-        <span>© 2026 Adam Reidelbach</span>
-      </footer>
     </main>
+
+    <script>
+      (() => {
+        const clock = document.querySelector('#local-time');
+        const timeZone = 'America/Chicago';
+        const formatter = new Intl.DateTimeFormat('en-US', {
+          timeZone,
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          timeZoneName: 'short'
+        });
+
+        function updateClock() {
+          const now = new Date();
+          clock.textContent = formatter.format(now);
+          clock.dateTime = now.toISOString();
+          clock.title = `Current time in Austin, Texas (${timeZone})`;
+          window.setTimeout(updateClock, 1000 - (Date.now() % 1000) + 20);
+        }
+
+        updateClock();
+      })();
+    </script>
   </body>
 </html>
