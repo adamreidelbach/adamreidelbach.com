@@ -163,7 +163,7 @@ h1 {
   letter-spacing: -.06em;
 }
 
-h1 span { display: block; }
+h1 > span { display: block; }
 
 .name {
   margin: 0;
@@ -192,6 +192,8 @@ h1 span { display: block; }
   font-size: 15px;
   line-height: 1.42;
 }
+
+.keep-together { white-space: nowrap; }
 
 .links {
   padding-top: clamp(34px, 5vh, 52px);
@@ -270,7 +272,7 @@ h1 span { display: block; }
   .content { padding: 0 0 28px; }
   .statement { padding-bottom: clamp(38px, 5vh, 54px); }
   h1 { font-size: clamp(62px, 6.4vw, 104px); }
-  .supporting { margin-top: 34px; font-size: clamp(15px, 1.35vw, 18px); }
+  .supporting { max-width: 760px; margin-top: 34px; font-size: clamp(15px, 1.35vw, 18px); }
   .intro { margin-top: auto; padding: 34px 0; }
   .name { font-size: clamp(38px, 4.2vw, 60px); }
   .role { font-size: clamp(16px, 1.45vw, 20px); }
