@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adam Reidelbach — Staff Software Engineer</title>
     <meta name="description" content="Staff software engineer focused on frontend architecture, product engineering, and developer experience.">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#0b0b09">
     <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 
@@ -25,71 +25,79 @@
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
 
-    <main class="page" id="top">
-      <aside class="sidebar" aria-label="About Adam">
-        <a class="monogram" href="#top" aria-label="Adam Reidelbach, home">
-          <span aria-hidden="true">A</span>
-        </a>
+    <main class="page" id="content">
+      <header class="masthead">
+        <a href="#content" class="wordmark" aria-label="Adam Reidelbach, home">Adam Reidelbach</a>
+        <p>Austin, Texas</p>
+      </header>
 
-        <dl class="details">
-          <div>
-            <dt>Location</dt>
-            <dd>Austin, Texas</dd>
-          </div>
-          <div>
-            <dt>Currently at</dt>
-            <dd>
-              <a href="https://www.favordelivery.com/" target="_blank" rel="noopener noreferrer">
-                Favor<span class="sr-only"> (opens in a new tab)</span>
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt>Local time</dt>
-            <dd><time id="local-time">Austin time</time></dd>
-          </div>
-        </dl>
-      </aside>
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title">
+          I build software,<br>
+          and I work on<span class="desktop-only"> how</span><br>
+          <span class="mobile-only">how </span>software<br class="mobile-only">
+          gets built.
+        </h1>
 
-      <section class="content" id="content" aria-labelledby="page-title">
-        <header class="statement">
-          <h1 id="page-title">
-            <span>I build software,</span>
-            <span>and I work on</span>
-            <span>how software <span class="keep-together">gets built.</span></span>
-          </h1>
-          <p class="supporting">Focused on frontend architecture, product engineering, and <span class="keep-together">developer experience.</span></p>
-        </header>
+        <figure class="hero-photo">
+          <img
+            src="public/big-bend-golden-hour.jpg"
+            srcset="public/big-bend-golden-hour-800.jpg 800w, public/big-bend-golden-hour-1600.jpg 1600w, public/big-bend-golden-hour.jpg 2400w"
+            sizes="(max-width: 719px) calc(100vw - 64px), calc(100vw - clamp(76px, 7.4vw, 128px))"
+            width="2400"
+            height="1600"
+            alt="Golden-hour sunlight falling across the layered ridges of Big Bend National Park"
+          >
+          <figcaption>
+            Photo by <a href="https://unsplash.com/@intricateexplorer?utm_source=adamreidelbach.com&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Intricate Explorer</a>
+            <span aria-hidden="true"> / </span>
+            <a href="https://unsplash.com/photos/the-sun-is-setting-over-a-mountain-range-SMtgSrx83zM?utm_source=adamreidelbach.com&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a>
+          </figcaption>
+        </figure>
 
-        <div class="intro">
-          <p class="name">Adam Reidelbach</p>
-          <p class="role">Staff Software Engineer</p>
-        </div>
-
-        <nav class="links" aria-label="Find Adam online">
-          <a href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
-        </nav>
+        <p class="focus">Focused on frontend architecture, product engineering, and developer experience.</p>
       </section>
+
+      <section class="profile" aria-label="About Adam">
+        <div class="details">
+          <p class="eyebrow">Staff Software Engineer</p>
+          <p>Austin, Texas</p>
+          <a class="linkedin" href="https://www.linkedin.com/in/adamreidelbach/" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05a3.75 3.75 0 0 1 3.37-1.85c3.61 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/>
+            </svg>
+            <span>Connect on LinkedIn</span>
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <p>© <span id="year"></span></p>
+        <p><time id="local-time">Austin time</time></p>
+      </footer>
     </main>
 
     <script>
       (() => {
         const clock = document.querySelector('#local-time');
+        const year = document.querySelector('#year');
         const timeZone = 'America/Chicago';
-        const formatter = new Intl.DateTimeFormat('en-US', {
+        const timeFormatter = new Intl.DateTimeFormat('en-US', {
           timeZone,
           hour: 'numeric',
           minute: '2-digit',
-          second: '2-digit',
           timeZoneName: 'short'
         });
+        const yearFormatter = new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric' });
 
         function updateClock() {
           const now = new Date();
-          clock.textContent = formatter.format(now);
+          clock.textContent = timeFormatter.format(now);
           clock.dateTime = now.toISOString();
           clock.title = `Current time in Austin, Texas (${timeZone})`;
-          window.setTimeout(updateClock, 1000 - (Date.now() % 1000) + 20);
+          year.textContent = yearFormatter.format(now);
+          window.setTimeout(updateClock, 60000 - (Date.now() % 60000) + 20);
         }
 
         updateClock();
